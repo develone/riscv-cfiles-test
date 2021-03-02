@@ -1,0 +1,34 @@
+me -a
+Linux ws009 4.4.0-201-generic #233-Ubuntu SMP Thu Jan 14 06:10:28 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+
+need  riscv64-unknown-elf
+
+Downloaded 
+https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14.tar.gz
+
+tar xvfz riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14.tar.gz
+
+
+mkdir riscv64-tools
+
+mv riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14/* riscv64-tools
+
+example export RISCV_PATH=$PWD/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14
+
+
+export PATH=/home/vidal/riscv64-tools/bin:$PATH
+
+echo $PATH
+/home/vidal/riscv64-tools/bin:/home/vidal/bin:/home/vidal/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+which riscv64-unknown-elf-gcc
+/home/vidal/riscv64-tools/bin/riscv64-unknown-elf-gcc
+
+cd riscv-cfiles/
+
+riscv64-unknown-elf-gcc -I ~/riscv64-tools/include helloworld.c -o hw
+
+riscv64-unknown-elf-objdump -d hw > disasm.txt
+
+git clone git@github.com:develone/riscv-cfiles-test.git
+
